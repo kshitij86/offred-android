@@ -1,0 +1,3 @@
+rootProject.name='Offred'
+include ':app'
+include ':offred'
