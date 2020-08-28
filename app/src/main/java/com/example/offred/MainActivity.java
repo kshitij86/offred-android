@@ -3,6 +3,7 @@ package com.example.offred;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,9 +25,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
+                    tv.setText("");
                     tv.setText(Offred.giveResponse("https://jsonplaceholder.typicode.com/todos/1"));
+                    Toast.makeText(getBaseContext(), "Done", Toast.LENGTH_LONG).show();
                 } catch (Exception e){
-                    Toast.makeText(getBaseContext(), "FATAL ERROR", Toast.LENGTH_LONG).show();
+                    Log.e(getApplication().getPackageName(), e.getMessage());
+                    Toast.makeText(getBaseContext(), "Can't connect. Are you online?", Toast.LENGTH_LONG).show();
                 }
             }
         });
