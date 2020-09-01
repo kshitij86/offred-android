@@ -1,23 +1,28 @@
 package com.example.offred;
 
 import android.os.AsyncTask;
+import android.util.Log;
+
 import java.util.concurrent.ExecutionException;
 
-public class Offred extends AsyncTask<String, Void, String> {
+public class Offred extends AsyncTask<String, Void, Response> {
     private final String TAG = "OFFRED";
 
     @Override
-    protected String doInBackground(String... urls) {
+    protected Response doInBackground(String... urls) {
+        Response response = new Response();
         try {
-            OffredUtil.makeGetRequest(urls[0]);
+            response = OffredUtil.makeGetRequest(urls[0]);
         } catch (Exception e) {
-            return OffredUtil.getResponseBody();
+            response.isException = true;
+            Log.d(TAG, e.getMessage());
         }
-        return OffredUtil.getResponseBody();
+        return response;
     }
 
-    public static String giveResponse(String link) throws ExecutionException, InterruptedException {
+    public static Response giveResponse(String endpoint) throws ExecutionException, InterruptedException {
+        // execute is non-static, needs an object to be called
         Offred offred = new Offred();
-        return offred.execute(link).get();
+        return offred.execute(endpoint).get();
     }
 }
