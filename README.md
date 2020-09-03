@@ -24,10 +24,14 @@ dependencies {
 
 # Usage
 
-Simply call Offred.giveResponse(url) and get the reponse back.
+### _GET_ requests
+
+ ```Offred.get(url)``` <br>
+API calls are made on a separate background thread and a Response object is returned.
+
 ```
 	 try{
-         Response data = Offred.giveResponse("https://jsonplaceholder.typicode.com/todos/1");
+         Response data = Offred.get("https://jsonplaceholder.typicode.com/todos/1");
          if(!data.isException){
                 response_box.setText(data.resBody);
                 time_box.setText("Took " + Double.toString(data.time) + "s");
