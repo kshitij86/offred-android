@@ -11,8 +11,11 @@ import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
+/* GET request example */
+
 public class MainActivity extends AppCompatActivity {
     private TextView response_box, time_box;
+    private final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +37,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
-                    Response data = Offred.giveResponse("https://jsonplaceholder.typicode.com/todos/1");
+                    Response data = Offred.get("https://jsonplaceholder.typicode.com/todos/1");
                     if(!data.isException){
+                        Log.d(TAG, "onClick: Call to web service successful");
                         response_box.setText(data.resBody);
                         time_box.setText("Took " + Double.toString(data.time) + "s");
                         Toast.makeText(getBaseContext(), "Done", Toast.LENGTH_LONG).show();
                     }
                 } catch (Exception e){
-                    Log.e(getApplication().getPackageName(), e.getMessage());
+                    Log.e(TAG, e.getMessage());
                     Toast.makeText(getBaseContext(), "Can't connect. Are you online?", Toast.LENGTH_LONG).show();
                 }
             }

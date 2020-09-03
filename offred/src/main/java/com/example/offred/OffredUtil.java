@@ -1,6 +1,10 @@
 package com.example.offred;
 
 import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.*;
 import java.net.*;
@@ -8,7 +12,8 @@ import java.net.*;
 public class OffredUtil {
     private static final String TAG = "OFFRED";
 
-    public static Response makeGetRequest(String GET_URL) throws IOException, NullPointerException{
+    public static Response makeGetRequest(String GET_URL) throws IOException, NullPointerException {
+        // TODO: Get more precise time
         double start = System.currentTimeMillis();
         Response response = new Response();
         try {
@@ -17,7 +22,7 @@ public class OffredUtil {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET"); // Set HTTP request method
 
-            /* Handle response */
+            /* Package the response into an object */
             String res = "";
             BufferedReader r = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String ipLine;

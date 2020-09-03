@@ -1,28 +1,33 @@
 package com.example.offred;
 
-import android.os.AsyncTask;
 import android.util.Log;
 
-import java.util.concurrent.ExecutionException;
+import org.json.JSONException;
 
-public class Offred extends AsyncTask<String, Void, Response> {
+public class Offred extends Thread  {
     private final String TAG = "OFFRED";
+    private String endpoint;
+    public static Response response = new Response();
 
-    @Override
-    protected Response doInBackground(String... urls) {
-        Response response = new Response();
-        try {
-            response = OffredUtil.makeGetRequest(urls[0]);
-        } catch (Exception e) {
-            response.isException = true;
-            Log.d(TAG, e.getMessage());
-        }
-        return response;
+
+    Offred(String endpoint){
+        this.endpoint = endpoint;
     }
 
-    public static Response giveResponse(String endpoint) throws ExecutionException, InterruptedException {
-        // execute is non-static, needs an object to be called
-        Offred offred = new Offred();
-        return offred.execute(endpoint).get();
+    @Override
+    public void run() {
+        try {
+            this.response = OffredUtil.makeGetRequest(endpoint);
+        } catch (Exception e) {
+            this.response.isException = true;
+            Log.d(TAG, e.getMessage());
+        }
+    }
+
+    public static Response get(String endpoint) {
+        // execute() is non-static, needs an object to be called
+        Offred offred = new Offred(endpoint);
+        offred.start();
+        return response;
     }
 }
