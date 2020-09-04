@@ -4,30 +4,33 @@ import android.util.Log;
 
 import org.json.JSONException;
 
-public class Offred extends Thread  {
+public class Offred {
     private final String TAG = "OFFRED";
-    private String endpoint;
     public static Response response = new Response();
 
+    // TODO: Make response specific to a method and not global
 
-    Offred(String endpoint){
-        this.endpoint = endpoint;
+    public Response get(String endpoint) {
+        new Thread(() -> {
+            try {
+                this.response = OffredUtil.makeGetRequest(endpoint);
+            } catch (Exception e) {
+                this.response.isException = true;
+                Log.d(TAG, e.getMessage());
+            }
+        }).start();
+        return this.response;
     }
 
-    @Override
-    public void run() {
-        try {
-            this.response = OffredUtil.makeGetRequest(endpoint);
-        } catch (Exception e) {
-            this.response.isException = true;
-            Log.d(TAG, e.getMessage());
-        }
-    }
-
-    public static Response get(String endpoint) {
-        // execute() is non-static, needs an object to be called
-        Offred offred = new Offred(endpoint);
-        offred.start();
-        return response;
+    public Response post(String endpoint, String postData) {
+        new Thread(() -> {
+            try {
+                this.response = OffredUtil.makePostRequest(endpoint, postData);
+            } catch (Exception e) {
+                this.response.isException = true;
+                Log.d(TAG, e.getMessage());
+            }
+        }).start();
+        return this.response;
     }
 }

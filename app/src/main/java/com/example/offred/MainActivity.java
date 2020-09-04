@@ -2,6 +2,7 @@ package com.example.offred;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,15 +18,19 @@ public class MainActivity extends AppCompatActivity {
     private TextView response_box, time_box;
     private final String TAG = "MainActivity";
 
+    // TODO: Add an EditText for URL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Set values
         response_box = findViewById(R.id.request_box);
         time_box = findViewById(R.id.time_box);
-        Button btn = findViewById(R.id.button);
+        Button getButton = findViewById(R.id.button);
         Button clear = findViewById(R.id.clear);
+        Button goToPost = findViewById(R.id.post);
+
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,12 +38,13 @@ public class MainActivity extends AppCompatActivity {
                 time_box.setText("");
             }
         });
-        btn.setOnClickListener(new View.OnClickListener() {
+        getButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try{
-                    Response data = Offred.get("https://jsonplaceholder.typicode.com/todos/1");
-                    if(!data.isException){
+                    Offred offred = new Offred();
+                    Response data = offred.get("https://jsonplaceholder.typicode.com/todos/1");
+                    if(!data.isException && data.resBody != "NULL_REQUEST"){
                         Log.d(TAG, "onClick: Call to web service successful");
                         response_box.setText(data.resBody);
                         time_box.setText("Took " + Double.toString(data.time) + "s");
@@ -46,10 +52,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } catch (Exception e){
                     Log.e(TAG, e.getMessage());
-                    Toast.makeText(getBaseContext(), "Can't connect. Are you online?", Toast.LENGTH_LONG).show();
                 }
             }
         });
+
+        goToPost.setOnClickListener(v -> {
+            startActivity(new Intent(this, PostActivity.class));
+        });
+
+
     }
 }
 
