@@ -1,10 +1,6 @@
 package com.example.offred;
 
 import android.util.Log;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.*;
 import java.net.*;
