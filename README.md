@@ -26,7 +26,7 @@ dependencies {
 
 ### _GET_ requests
 
-    Offred.get(url) <br>
+    Offred.get(url)
     API calls are made on a separate background thread and a Response object is returned.
 
 ```
@@ -45,8 +45,7 @@ dependencies {
 ```
 
 ### _POST_ requests
-    Offred.post(url, postData) <br>
-  
+    Offred.post(url, postData)
 ```
   if(!name.getText().equals("") && !salary.getText().equals("") && !age.getText().equals("")){
       String data = "{\"name\":" + name.getText() + ",\"salary\":" + salary.getText() + ",\"age\":"+ age.getText() +"}";
