@@ -1,14 +1,17 @@
 package com.example.offred;
 
 import android.util.Log;
-import java.io.IOException;
-import java.io.*;
-import java.net.*;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class OffredUtil {
     private static final String TAG = "OFFRED";
 
-    public static Response makeGetRequest(String GET_URL) throws IOException, NullPointerException {
+    public static Response makeGetRequest(String GET_URL)  {
         // TODO: Get more precise time
         double start = System.currentTimeMillis();
         Response response = new Response();
@@ -27,7 +30,7 @@ public class OffredUtil {
             }
             response.statusCode = String.valueOf(conn.getResponseCode());
             response.resBody = res;
-        } catch(UnknownHostException e) {
+        } catch(Exception e) {
             Log.d(TAG, e.getMessage());
         }
 
@@ -37,13 +40,13 @@ public class OffredUtil {
         return response;
     }
 
-    public static Response makePostRequest(String POST_URL, String requestBody) throws IOException, NullPointerException {
+    public static Response makePostRequest(String POST_URL, String requestBody) {
         double start = System.currentTimeMillis();
 
         Response response = new Response();
-        URL url = new URL(POST_URL);
 
         try{
+            URL url = new URL(POST_URL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);

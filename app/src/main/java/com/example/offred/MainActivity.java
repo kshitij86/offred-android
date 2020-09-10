@@ -10,13 +10,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 /* GET request example */
 
 public class MainActivity extends AppCompatActivity {
+    private final String TAG = "MAIN_ACTIVITY";
     private TextView response_box, time_box;
-    private final String TAG = "MainActivity";
 
     // TODO: Add an EditText for URL
     @Override
@@ -42,8 +42,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
+                    // Create an object to handle IOException
                     Offred offred = new Offred();
-                    Response data = offred.get("https://jsonplaceholder.typicode.com/todos/1");
+                    Future<Response> fr =  offred.get("https://jsonplaceholder.typicode.com/todos/1");
+                    Response data = fr.get();
                     if(!data.isException && data.resBody != "NULL_REQUEST"){
                         Log.d(TAG, "onClick: Call to web service successful");
                         response_box.setText(data.resBody);
