@@ -10,7 +10,7 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="92dp"
         android:ems="10"
         android:hint="name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,15 +45,41 @@
     <Button
         android:id="@+id/postButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="104dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginBottom="176dp"
         android:background="@color/colorPrimary"
         android:padding="12dp"
         android:text="Make POST request"
+        android:textAllCaps="false"
         android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/clear"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="76dp"
+        android:background="@color/colorPrimary"
+        android:text="Clear"
+        android:textAllCaps="false"
+        android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/postButton"
+        app:layout_constraintTop_toBottomOf="@+id/time_box" />
+
+    <TextView
+        android:id="@+id/time_box"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="72dp"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/age" />
 
@@ -61,9 +87,10 @@
         android:id="@+id/goToGet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
         android:text="Go to GET Example"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postButton" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

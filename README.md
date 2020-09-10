@@ -20,7 +20,7 @@ dependencies {
 	        implementation 'com.github.kshitij86:offred-android:<latest-release>'
 	}
 ```
-
+The example application shows usages in an actual app environment.
 
 # Usage
 
