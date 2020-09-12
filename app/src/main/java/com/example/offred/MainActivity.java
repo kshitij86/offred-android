@@ -46,9 +46,10 @@ public class MainActivity extends AppCompatActivity {
                     Offred offred = new Offred();
                     Future<Response> fr =  offred.get("https://jsonplaceholder.typicode.com/todos/1");
                     Response data = fr.get();
-                    if(!data.isException && data.resBody != "NULL_REQUEST"){
+                    String dataBody = data.resBody.toString();
+                    if(!data.isException && dataBody != "NULL_REQUEST"){
                         Log.d(TAG, "onClick: Call to web service successful");
-                        response_box.setText(data.resBody);
+                        response_box.setText(dataBody);
                         time_box.setText("Took " + Double.toString(data.time) + "s");
                         Toast.makeText(getBaseContext(), "Done", Toast.LENGTH_LONG).show();
                     }

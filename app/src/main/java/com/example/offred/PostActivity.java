@@ -13,9 +13,8 @@ import java.util.concurrent.Future;
 
 public class PostActivity extends AppCompatActivity {
     private final String TAG = "POST_ACTIVITY";
-    TextView time_box;
-    EditText name, age, salary;
-    Button postButton, goToGet, clear;
+    private TextView time_box;
+    private EditText name, age, salary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +25,11 @@ public class PostActivity extends AppCompatActivity {
         salary = findViewById(R.id.salary);
         age = findViewById(R.id.age);
         time_box = findViewById(R.id.time_box);
-        clear = findViewById(R.id.clear);
+        Button clear = findViewById(R.id.clear);
         initEditText();
 
-        goToGet = findViewById(R.id.goToGet);
-        postButton = findViewById(R.id.postButton);
+        Button goToGet = findViewById(R.id.goToGet);
+        Button postButton = findViewById(R.id.postButton);
         postButton.setOnClickListener(v -> {
             try{
                 if(!name.getText().toString().equals("") && !salary.getText().toString().equals("") && !age.getText().toString().equals("")){
@@ -39,7 +38,7 @@ public class PostActivity extends AppCompatActivity {
                     Offred offred = new Offred();
                     Future<Response> fr = offred.post("https://dummy.restapiexample.com/api/v1/create", passJSON);
                     Response data = fr.get();
-                    Toast.makeText(this, data.resBody, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, data.resBody.toString(), Toast.LENGTH_SHORT).show();
                     time_box.setText("Took " + Double.toString(data.time) + "s");
                 } else {
                     Toast.makeText(this, "Empty values not allowed !", Toast.LENGTH_SHORT).show();

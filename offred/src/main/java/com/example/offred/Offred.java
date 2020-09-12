@@ -19,4 +19,10 @@ public class Offred {
     public Future<Response> post(String endpoint, String postData) throws IOException {
         return CompletableFuture.supplyAsync(() -> OffredUtil.makePostRequest(endpoint, postData));
     }
+
+    public void delete (String endpoint) {
+        new Thread(() -> {
+            OffredUtil.makeDeleteRequest(endpoint);
+        });
+    }
 }
