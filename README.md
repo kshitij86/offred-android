@@ -63,3 +63,19 @@ The example application shows usages in an actual app environment.
             Log.d(TAG, e.getMessage());
         }
 ```
+
+### `RESPONSE` object
+Performing a HTTP request returns a `Response` object, which contains response body along with response headers, total request time etc. 
+Below is a full list.
+
+| ```Response data``` | ```Type```|
+|---------------|-------------|
+| ```time```    |  ```Double```    |
+| ```resBody```|  ```JSONObject```|
+| ```statusCode```| ```String```   |
+| ```headers```   | ```Map<String, List<String>>``` |
+| ```isException```   | ```Boolean``` |
+
+
+### Future Scope & TODOs
+1. Better `Exception` handling
