@@ -68,7 +68,7 @@ The example application shows usages in an actual app environment.
 Performing a HTTP request returns a `Response` object, which contains response body along with response headers, total request time etc. 
 Below is a full list.
 
-| ```Response data``` | ```Type```|
+| ```Response data```|```Type```|
 |---------------|-------------|
 | ```time```    |  ```Double```    |
 | ```resBody```|  ```JSONObject```|
