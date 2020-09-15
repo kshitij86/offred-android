@@ -64,6 +64,10 @@ The example application shows usages in an actual app environment.
         }
 ```
 
+### _DELETE_ requests
+    Offred.delete(url)
+
+
 ### `RESPONSE` object
 Performing a HTTP request returns a `Response` object, which contains response body along with response headers, total request time etc. 
 Below is a full list.
