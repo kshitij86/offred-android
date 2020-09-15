@@ -81,5 +81,10 @@ Below is a full list.
 | ```isException```   | ```Boolean``` |
 
 
-### Future Scope & TODOs
+# Future Scope & TODOs
 1. Better `Exception` handling
+2. Add more HTTP requests
+
+# Demo App
+The app included with repo showcases use cases for Offred.
+[](ss.jpeg)

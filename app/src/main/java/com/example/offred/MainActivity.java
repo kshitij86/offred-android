@@ -17,8 +17,9 @@ import java.util.concurrent.Future;
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MAIN_ACTIVITY";
     private TextView response_box, time_box;
+    private final String demoURL = "https://jsonplaceholder.typicode.com/todos/1";
 
-    // TODO: Add an EditText for URL
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         Button getButton = findViewById(R.id.button);
         Button clear = findViewById(R.id.clear);
         Button goToPost = findViewById(R.id.post);
+        TextView urlBox = findViewById(R.id.urlBox);
+
+        urlBox.setText(demoURL);
 
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 try{
                     // Create an object to handle IOException
                     Offred offred = new Offred();
-                    Future<Response> fr =  offred.get("https://jsonplaceholder.typicode.com/todos/1");
+                    Future<Response> fr =  offred.get(demoURL);
                     Response data = fr.get();
                     String dataBody = data.resBody.toString();
                     if(!data.isException && dataBody != "NULL_REQUEST"){

@@ -13,6 +13,7 @@ import java.util.concurrent.Future;
 
 public class PostActivity extends AppCompatActivity {
     private final String TAG = "POST_ACTIVITY";
+    private final String demoURL = "https://dummy.restapiexample.com/api/v1/create";
     private TextView time_box;
     private EditText name, age, salary;
 
@@ -30,13 +31,17 @@ public class PostActivity extends AppCompatActivity {
 
         Button goToGet = findViewById(R.id.goToGet);
         Button postButton = findViewById(R.id.postButton);
+        TextView urlBox = findViewById(R.id.urlBox);
+
+        urlBox.setText(demoURL);
+
         postButton.setOnClickListener(v -> {
             try{
                 if(!name.getText().toString().equals("") && !salary.getText().toString().equals("") && !age.getText().toString().equals("")){
                     // TODO: Add support for JSON data, not only Strings, this is a mess
                     String passJSON = "{\"name\":" + name.getText() + ",\"salary\":" + salary.getText() + ",\"age\":"+ age.getText() +"}";
                     Offred offred = new Offred();
-                    Future<Response> fr = offred.post("https://dummy.restapiexample.com/api/v1/create", passJSON);
+                    Future<Response> fr = offred.post(demoURL, passJSON);
                     Response data = fr.get();
                     Toast.makeText(this, data.resBody.toString(), Toast.LENGTH_SHORT).show();
                     time_box.setText("Took " + Double.toString(data.time) + "s");

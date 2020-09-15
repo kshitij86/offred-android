@@ -6,11 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".PostActivity">
 
+    <TextView
+        android:id="@+id/urlBox"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="92dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="188dp"
         android:ems="10"
         android:hint="name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,8 +56,8 @@
         android:id="@+id/postButton"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginBottom="176dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginBottom="120dp"
         android:background="@color/colorPrimary"
         android:padding="12dp"
         android:text="Make POST request"
@@ -60,22 +70,22 @@
         android:id="@+id/clear"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:layout_marginTop="92dp"
         android:layout_marginEnd="76dp"
+        android:layout_marginBottom="120dp"
         android:background="@color/colorPrimary"
         android:text="Clear"
         android:textAllCaps="false"
         android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/postButton"
-        app:layout_constraintTop_toBottomOf="@+id/time_box" />
+        app:layout_constraintStart_toEndOf="@+id/postButton" />
 
     <TextView
         android:id="@+id/time_box"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="60dp"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +97,7 @@
         android:id="@+id/goToGet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="44dp"
         android:text="Go to GET Example"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
