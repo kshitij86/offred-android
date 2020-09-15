@@ -1,6 +1,5 @@
 package com.example.offred;
 
-import android.util.Log;
 
 import org.json.JSONObject;
 
@@ -36,11 +35,12 @@ public class OffredUtil {
             }
             response.statusCode = String.valueOf(conn.getResponseCode());
             response.resBody = new JSONObject(res);
+            response.headers = conn.getHeaderFields();
 
             // Release the resource
             conn.disconnect();
         } catch(Exception e) {
-            Log.d(TAG, e.getMessage());
+            response.isException = true;
         }
 
         double end = System.currentTimeMillis();
@@ -75,6 +75,8 @@ public class OffredUtil {
             }
             response.statusCode = String.valueOf(conn.getResponseCode());
             response.resBody = new JSONObject(resp.toString());
+            response.headers = conn.getHeaderFields();
+
             conn.disconnect();
         } catch (Exception e){
             response.isException = true;
@@ -87,7 +89,7 @@ public class OffredUtil {
     }
 
     /* DELETE from an endpoint */
-    public static void makeDeleteRequest(String endpoint){
+    public static Response makeDeleteRequest(String endpoint){
         double start = System.currentTimeMillis();
         Response response = new Response();
         try {
@@ -96,11 +98,20 @@ public class OffredUtil {
             conn.setRequestMethod("DELETE");
             conn.setDoOutput(true);
 
+
             // Perform delete and disconnect
             conn.connect();
+
+            // Set response headers
+            response.headers = conn.getHeaderFields();
+
             conn.disconnect();
         } catch (Exception e){
             response.isException = true;
         }
+        double end = System.currentTimeMillis();
+        response.time = (end - start) / 1000;
+
+        return response;
     }
 }
