@@ -87,4 +87,4 @@ Below is a full list.
 
 # Demo App
 The app included with repo showcases use cases for Offred.
-[](ss.jpeg)
+[Demo app](ss.jpeg)
