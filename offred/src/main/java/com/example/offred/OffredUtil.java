@@ -1,6 +1,5 @@
 package com.example.offred;
 
-
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -60,7 +59,7 @@ public class OffredUtil {
             URL url = new URL(POST_URL);
             HttpURLConnection postConnection = (HttpURLConnection) url.openConnection();
             postConnection.setRequestMethod("POST");
-            // Indicates writing to the resource
+            // Indicates writing to the resource in needed
             postConnection.setDoOutput(true);
 
             // Write the request to the connection

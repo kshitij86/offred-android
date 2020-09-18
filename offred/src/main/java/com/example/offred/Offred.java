@@ -5,8 +5,6 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Future;
 
 public class Offred {
-    public static Response response = new Response();
-
     // TODO: Make response specific to a method and not global
 
     public Future<Response> get(String endpoint) {
