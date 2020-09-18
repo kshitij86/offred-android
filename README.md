@@ -36,9 +36,6 @@ The example application shows usages in an actual app environment.
         Response data = fr.get();
         if(!data.isException && data.resBody != "NULL_REQUEST"){
             Log.d(TAG, "onClick: Call to web service successful");
-            response_box.setText(data.resBody);
-            time_box.setText("Took " + Double.toString(data.time) + "s");
-            Toast.makeText(getBaseContext(), "Done", Toast.LENGTH_LONG).show();
             }
         } catch (Exception e){
             Log.e(TAG, e.getMessage());
@@ -49,18 +46,16 @@ The example application shows usages in an actual app environment.
     Offred.post(url, postData)
 ```
     try{
-        if(!name.getText().equals("") && !salary.getText().equals("") && !age.getText().equals("")){
-            // TODO: Add support for JSON data, not only Strings, this is a mess
+            ...
+            // JSON to POST to RESTful API
             String passJSON = "{\"name\":" + name.getText() + ",\"salary\":" + salary.getText() + ",\"age\":"+ age.getText() +"}";
+            
             Offred offred = new Offred();
             Future<Response> fr = offred.post("https://dummy.restapiexample.com/api/v1/create", passJSON);
             Response data = fr.get();
-                Toast.makeText(this, data.resBody, Toast.LENGTH_SHORT).show();
-         } else {
-            Toast.makeText(this, "Empty values not allowed !", Toast.LENGTH_SHORT).show();
-         }
+            ...
        } catch (Exception e){
-            Log.d(TAG, e.getMessage());
+            Log.e(TAG, e.getMessage());
         }
 ```
 

@@ -11,7 +11,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-// TODO: Update UI for multiple request demos
 // TODO: Test delete method
 
 public class OffredUtil {

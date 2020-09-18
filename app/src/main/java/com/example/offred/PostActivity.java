@@ -27,13 +27,15 @@ public class PostActivity extends AppCompatActivity {
         age = findViewById(R.id.age);
         time_box = findViewById(R.id.time_box);
         Button clear = findViewById(R.id.clear);
-        initEditText();
 
         Button goToGet = findViewById(R.id.goToGet);
         Button postButton = findViewById(R.id.postButton);
         TextView urlBox = findViewById(R.id.urlBox);
 
+        // Some OnInit() setup
         urlBox.setText(demoURL);
+        initEditText();
+
 
         postButton.setOnClickListener(v -> {
             try{
@@ -49,7 +51,7 @@ public class PostActivity extends AppCompatActivity {
                     Toast.makeText(this, "Empty values not allowed !", Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception e){
-                Log.d(TAG, e.getMessage());
+                Log.e(TAG, e.getMessage());
             }
         });
 
