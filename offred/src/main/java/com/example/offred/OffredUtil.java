@@ -18,7 +18,7 @@ public class OffredUtil {
     /* GET from an endpoint */
     public static Response makeGetRequest(String GET_URL)  {
         // TODO: Get more precise time
-        double start = System.currentTimeMillis();
+        double start = System.nanoTime();
         Response response = new Response();
         try {
             /* Set up url connection */
@@ -43,7 +43,7 @@ public class OffredUtil {
             response.isException = true;
         }
 
-        double end = System.currentTimeMillis();
+        double end = System.nanoTime();
         response.time = (end - start) / 1000;
 
         return response;
@@ -51,7 +51,7 @@ public class OffredUtil {
 
     /* POST to an endpoint */
     public static Response makePostRequest(String POST_URL, String requestBody) {
-        double start = System.currentTimeMillis();
+        double start = System.nanoTime();
 
         Response response = new Response();
 
@@ -82,7 +82,7 @@ public class OffredUtil {
             response.isException = true;
         }
 
-        double end = System.currentTimeMillis();
+        double end = System.nanoTime();
         response.time = (end - start) / 1000;
 
         return response;
@@ -90,26 +90,26 @@ public class OffredUtil {
 
     /* DELETE from an endpoint */
     public static Response makeDeleteRequest(String endpoint){
-        double start = System.currentTimeMillis();
+        double start = System.nanoTime();
         Response response = new Response();
         try {
             URL url = new URL(endpoint);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("DELETE");
-            conn.setDoOutput(true);
+            HttpURLConnection deleteConn = (HttpURLConnection) url.openConnection();
+            deleteConn.setRequestMethod("DELETE");
+            deleteConn.setDoOutput(true);
 
 
             // Perform delete and disconnect
-            conn.connect();
+            deleteConn.connect();
 
             // Set response headers
-            response.headers = conn.getHeaderFields();
+            response.headers = deleteConn.getHeaderFields();
 
-            conn.disconnect();
+            deleteConn.disconnect();
         } catch (Exception e){
             response.isException = true;
         }
-        double end = System.currentTimeMillis();
+        double end = System.nanoTime();
         response.time = (end - start) / 1000;
 
         return response;

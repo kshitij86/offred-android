@@ -84,6 +84,8 @@ Below is a full list.
 # Future Scope & TODOs
 1. Better `Exception` handling
 2. Add more HTTP requests
+3. Caching support
+4. Support for XML data
 
 # Demo App
 The app included with repo showcases use cases for Offred.
