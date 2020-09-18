@@ -74,16 +74,16 @@ Below is a full list.
 
 | ```Response data```|```Type```|
 |---------------|-------------|
-| ```time```    |  ```Double```    |
+| ```time```    |  ```double```    |
 | ```resBody```|  ```JSONObject```|
-| ```statusCode```| ```String```   |
+| ```statusCode```| ```int```   |
 | ```headers```   | ```Map<String, List<String>>``` |
 | ```isException```   | ```Boolean``` |
 
 
 # Future Scope & TODOs
 1. Better `Exception` handling
-2. Add more HTTP requests
+2. Extend HTTP requests
 3. Caching support
 4. Support for XML data
 
